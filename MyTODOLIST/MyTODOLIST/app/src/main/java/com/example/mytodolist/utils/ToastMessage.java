@@ -9,6 +9,6 @@ public class ToastMessage {
         return toastInstance;
     }
     public void showMessage(String msg, Context context){
-        Toast.makeText(context,msg,Toast.LENGTH_LONG).show();
+        Toast.makeText(context,msg,Toast.LENGTH_SHORT).show();
     }
 }

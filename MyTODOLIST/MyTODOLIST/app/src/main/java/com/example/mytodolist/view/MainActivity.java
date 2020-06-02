@@ -21,25 +21,38 @@ import com.example.mytodolist.utils.ToastMessage;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private RecyclerAdapter adapter;
     static Button btnAdd;
+    static Button btnModify;
+    static Button btnDelete;
     private RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setTitle("RecyclerView 예제1");
-        btnAdd = (Button) findViewById(R.id.btnAdd);
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        // recyclerView1의  layoutManger 형식을 지정한다.
+        inflateLayout();
+        setButtonClickListeners();
+        setRecyclerView();
 
-        // recyclerView1의  layoutManger 형식을 지정한다. Grid형식도 설정가능하다.
+    }
+    private void setRecyclerView(){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-
         adapter = new RecyclerAdapter();
         recyclerView.setAdapter(adapter);
-
-        btnAdd.setOnClickListener(this);
+    }
+    private void inflateLayout(){
+        setContentView(R.layout.activity_main);
+        btnAdd = (Button) findViewById(R.id.btnAdd);
+        btnDelete = (Button) findViewById(R.id.btnDelete);
+        btnModify = (Button) findViewById(R.id.btnModify);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
     }
 
+    private void setButtonClickListeners(){
+        btnAdd.setOnClickListener(this);
+        btnDelete.setOnClickListener(this);
+        btnModify.setOnClickListener(this);
+    }
 
     private void startAddItemActivity(){
         MainModel data = new MainModel();
@@ -56,8 +69,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(requestCode==Code.addItemRequestCode.getValue() && resultCode==Code.addItemResponseCode.getValue()){
             MainModel data = new MainModel();
             Bundle result = resultIntent.getBundleExtra("bundle");
+
             String setTitle = result.getString("subject");
             String setContent = result.getString("content");
+
             data.setTitle(setTitle);
             data.setContent(setContent);
             adapter.addItem(data);
@@ -74,6 +89,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId()){
             case R.id.btnAdd:
                 startAddItemActivity();
+                break;
+            case R.id.btnDelete:
+                ToastMessage.getInstance().showMessage("삭제 버튼 클릭",getApplicationContext());
+                break;
+            case R.id.btnModify:
+                ToastMessage.getInstance().showMessage("수정 버튼 클릭",getApplicationContext());
                 break;
         }
     }
