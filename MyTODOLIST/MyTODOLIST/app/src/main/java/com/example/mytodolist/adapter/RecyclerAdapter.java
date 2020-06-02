@@ -3,7 +3,6 @@ package com.example.mytodolist.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,6 +42,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<MainViewHolder> {
     // Data 객체(아이템) 을 하나씩 추가시킨다.
     public void addItem(MainModel model) {
         dataList.add(model);
+        model.insert();
     }
 
 }

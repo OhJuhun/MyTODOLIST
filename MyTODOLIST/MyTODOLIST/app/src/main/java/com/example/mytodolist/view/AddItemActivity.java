@@ -18,9 +18,15 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
     private static Button btnOK;
     private static EditText etContent;
     private static EditText etSubject;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        inflateLayout();
+        setButtonClickListeners();
+    }
+
+    private void inflateLayout(){
         setContentView(R.layout.activity_additem);
 
         btnCancel  = (Button) findViewById(R.id.btnOK);
@@ -28,10 +34,8 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
         etSubject = (EditText) findViewById(R.id.etSubject);
         etContent = (EditText) findViewById(R.id.etContent);
 
-        setButtonListener();
     }
-
-    private void setButtonListener(){
+    private void setButtonClickListeners(){
 
         btnCancel.setOnClickListener(this);
         btnOK.setOnClickListener(this);

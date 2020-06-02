@@ -7,12 +7,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.mytodolist.R;
 import com.example.mytodolist.adapter.RecyclerAdapter;
+import com.example.mytodolist.dao.TodoDao;
+import com.example.mytodolist.database.TodoDatabase;
+import com.example.mytodolist.entity.Todo;
 import com.example.mytodolist.model.MainModel;
 import com.example.mytodolist.utils.Code;
 import com.example.mytodolist.utils.ToastMessage;
@@ -24,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     static Button btnModify;
     static Button btnDelete;
     private RecyclerView recyclerView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         inflateLayout();
         setButtonClickListeners();
         setRecyclerView();
-
     }
+
     private void setRecyclerView(){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
