@@ -1,6 +1,5 @@
 package com.example.mytodolist.view;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +9,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mytodolist.R;
+import com.example.mytodolist.utils.AlertMessageDialog;
 import com.example.mytodolist.utils.Code;
 
 public class AddItemActivity extends AppCompatActivity implements View.OnClickListener {
@@ -36,21 +36,21 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
         btnCancel.setOnClickListener(this);
         btnOK.setOnClickListener(this);
     }
-    private void alertMessage(String msgTitle, String msgContent){
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-
-        dialogBuilder.setTitle(msgTitle);
-        dialogBuilder.setMessage(msgContent);
-        dialogBuilder.show();
-    }
+//    private void alertMessage(String msgTitle, String msgContent){
+//        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+//
+//        dialogBuilder.setTitle(msgTitle);
+//        dialogBuilder.setMessage(msgContent);
+//        dialogBuilder.show();
+//    }
 
     private boolean canBind(String subject, String content){
         if(subject.equals("")) {
-            alertMessage("제목이 없습니다.","제목을 입력해주세요.");
+            AlertMessageDialog.getInstance().simpleAlertMessage("제목이 없습니다.","제목을 입력해주세요.",this);
             return false;
         }
         if (content.equals("")) {
-            alertMessage("내용이 없습니다.","내용 입력해주세요.");
+            AlertMessageDialog.getInstance().simpleAlertMessage("내용이 없습니다.","내용 입력해주세요.",this);
             return false;
         }
         return true;
