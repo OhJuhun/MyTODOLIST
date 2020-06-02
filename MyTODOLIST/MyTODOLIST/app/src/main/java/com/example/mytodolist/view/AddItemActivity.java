@@ -36,13 +36,7 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
         btnCancel.setOnClickListener(this);
         btnOK.setOnClickListener(this);
     }
-//    private void alertMessage(String msgTitle, String msgContent){
-//        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-//
-//        dialogBuilder.setTitle(msgTitle);
-//        dialogBuilder.setMessage(msgContent);
-//        dialogBuilder.show();
-//    }
+
 
     private boolean canBind(String subject, String content){
         if(subject.equals("")) {

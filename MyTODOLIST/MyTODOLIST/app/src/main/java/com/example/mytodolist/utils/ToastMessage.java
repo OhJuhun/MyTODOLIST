@@ -4,8 +4,11 @@ import android.content.Context;
 import android.widget.Toast;
 
 public class ToastMessage {
-
-    public static void showMessage(String msg, Context c){
-        Toast.makeText(c,msg,Toast.LENGTH_LONG).show();
+    private static ToastMessage toastInstance = new ToastMessage();
+    public static synchronized ToastMessage getInstance() {
+        return toastInstance;
+    }
+    public void showMessage(String msg, Context context){
+        Toast.makeText(context,msg,Toast.LENGTH_LONG).show();
     }
 }

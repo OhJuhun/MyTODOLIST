@@ -10,7 +10,7 @@ public class AlertMessageDialog {
     public static synchronized AlertMessageDialog getInstance() {
         return alertInstance;
     }
-    public static void simpleAlertMessage(String msgTitle, String msgContent, Activity activity){
+    public void simpleAlertMessage(String msgTitle, String msgContent, Activity activity){
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(activity);
         dialogBuilder.setTitle(msgTitle);
         dialogBuilder.setMessage(msgContent);

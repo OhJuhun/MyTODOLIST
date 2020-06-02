@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
             //구분선 추가
             adapter.notifyDataSetChanged();
-            ToastMessage.showMessage("목록에 추가되었습니다.",getApplicationContext());
+            ToastMessage.getInstance().showMessage("목록에 추가되었습니다.",getApplicationContext());
         }
     }
 
