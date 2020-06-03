@@ -66,30 +66,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void startAddItemActivity(){
-        MainModel data = new MainModel();
         Intent intent = new Intent(getApplicationContext(),AddItemActivity.class);
-        System.out.println(Code.addItemRequestCode);
-        Code c = Code.addItemRequestCode;
-
         startActivityForResult(intent, Code.addItemRequestCode.getValue());
+    }
 
+    private void addToDataBase(String title, String content){
+        ToDoEntity toDoEntity = new ToDoEntity();
+        toDoEntity.setTitle(title);
+        toDoEntity.setContent(content);
+        viewModel.insert(toDoEntity);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent resultIntent){
         super.onActivityResult(requestCode, resultCode, resultIntent);
         if(requestCode==Code.addItemRequestCode.getValue() && resultCode==Code.addItemResponseCode.getValue()){
-
             Bundle result = resultIntent.getBundleExtra("bundle");
-
-            String setTitle = result.getString("subject");
-            String setContent = result.getString("content");
-            ToDoEntity toDoEntity = new ToDoEntity();
-            toDoEntity.setTitle(setTitle);
-            toDoEntity.setContent(setContent);
-            viewModel.insert(toDoEntity);
+            addToDataBase(result.getString("subject"),result.getString("content"));
             ToastMessage.getInstance().showMessage("목록에 추가되었습니다.",getApplicationContext());
-
         }
     }
 

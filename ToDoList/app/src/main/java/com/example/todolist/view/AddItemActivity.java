@@ -16,6 +16,7 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
 
     private static Button btnCancel;
     private static Button btnOK;
+
     private static EditText etContent;
     private static EditText etSubject;
 
@@ -36,7 +37,6 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
 
     }
     private void setButtonClickListeners(){
-
         btnCancel.setOnClickListener(this);
         btnOK.setOnClickListener(this);
     }
@@ -82,6 +82,7 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.btnCancel:
                 actionCancel();
                 break;
+
         }
     }
 }
