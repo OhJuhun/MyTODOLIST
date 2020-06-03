@@ -31,7 +31,6 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainViewHolder> {
     public void onBindViewHolder(MainViewHolder holder, int position) {
         if (todos != null) {
             ToDoEntity current = todos.get(position);
-            Log.e(current.getDate(),"date");
             holder.onBind(current.getTitle(),current.getContent(),current.getDate());
         }
         //todo가 널일 떄 ?

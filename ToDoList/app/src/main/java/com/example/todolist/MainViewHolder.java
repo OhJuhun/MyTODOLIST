@@ -1,11 +1,15 @@
 package com.example.todolist;
 
+import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.todolist.utils.AlertMessageDialog;
+import com.example.todolist.view.MainActivity;
 
 public class MainViewHolder extends RecyclerView.ViewHolder {
     // RecyclerView 의 ViewHolder 만든다.
@@ -14,6 +18,13 @@ public class MainViewHolder extends RecyclerView.ViewHolder {
     private final TextView tvDate;
     public MainViewHolder(@NonNull View itemView) {
         super(itemView);
+        itemView.setOnLongClickListener(new View.OnLongClickListener(){
+            @Override
+            public boolean onLongClick(View v){
+                AlertMessageDialog.getInstance().selectAlertMessage("선택","삭제 / 수정하시겠습니까?", v.getContext());
+                return true;
+            }
+        });
         tvMemoTitle = (TextView) itemView.findViewById(R.id.tvMemoTitle);
         tvMemoContent = (TextView) itemView.findViewById(R.id.tvMemoContent);
         tvDate = (TextView) itemView.findViewById(R.id.tvDate);

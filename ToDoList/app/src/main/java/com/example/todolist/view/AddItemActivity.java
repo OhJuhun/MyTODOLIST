@@ -26,6 +26,7 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
 
     private static DatePicker dpDatePicker;
     private static TimePicker tpTimePicker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
