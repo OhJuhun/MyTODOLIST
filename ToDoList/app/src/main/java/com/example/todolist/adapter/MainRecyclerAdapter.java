@@ -1,6 +1,7 @@
 package com.example.todolist.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,8 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainViewHolder> {
     public void onBindViewHolder(MainViewHolder holder, int position) {
         if (todos != null) {
             ToDoEntity current = todos.get(position);
-            holder.onBind(current.getTitle(),current.getContent());
+            Log.e(current.getDate(),"date");
+            holder.onBind(current.getTitle(),current.getContent(),current.getDate());
         }
         //todo가 널일 떄 ?
     }

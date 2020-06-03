@@ -15,7 +15,8 @@ public class ToDoEntity {
     private String title;
     @ColumnInfo(name="content")
     private String content;
-
+    @ColumnInfo()
+    private String date;
     public int getId() {
         return id;
     }
@@ -40,4 +41,11 @@ public class ToDoEntity {
         this.content = content;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 }

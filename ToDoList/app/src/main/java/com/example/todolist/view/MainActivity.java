@@ -70,10 +70,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivityForResult(intent, Code.addItemRequestCode.getValue());
     }
 
-    private void addToDataBase(String title, String content){
+    private void addNewContent(String title, String content,String date){
         ToDoEntity toDoEntity = new ToDoEntity();
         toDoEntity.setTitle(title);
         toDoEntity.setContent(content);
+        toDoEntity.setDate(date);
         viewModel.insert(toDoEntity);
     }
 
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onActivityResult(requestCode, resultCode, resultIntent);
         if(requestCode==Code.addItemRequestCode.getValue() && resultCode==Code.addItemResponseCode.getValue()){
             Bundle result = resultIntent.getBundleExtra("bundle");
-            addToDataBase(result.getString("subject"),result.getString("content"));
+            addNewContent(result.getString("subject"),result.getString("content"),result.getString("date"));
             ToastMessage.getInstance().showMessage("목록에 추가되었습니다.",getApplicationContext());
         }
     }
